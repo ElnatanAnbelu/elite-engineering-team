@@ -1,0 +1,86 @@
+{
+  "collapse-filter": true,
+  "search": "",
+  "showTags": false,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "path:\"I Staff Engineer\"",
+      "color": {
+        "a": 1,
+        "rgb": 13938487
+      }
+    },
+    {
+      "query": "path:\"II Leadership\"",
+      "color": {
+        "a": 1,
+        "rgb": 11570144
+      }
+    },
+    {
+      "query": "path:\"III Engineering\"",
+      "color": {
+        "a": 1,
+        "rgb": 6271206
+      }
+    },
+    {
+      "query": "path:\"IV Infrastructure\"",
+      "color": {
+        "a": 1,
+        "rgb": 5227176
+      }
+    },
+    {
+      "query": "path:\"V Security\"",
+      "color": {
+        "a": 1,
+        "rgb": 14707051
+      }
+    },
+    {
+      "query": "path:\"VI Design\"",
+      "color": {
+        "a": 1,
+        "rgb": 15244221
+      }
+    },
+    {
+      "query": "path:\"VII Data\"",
+      "color": {
+        "a": 1,
+        "rgb": 14723151
+      }
+    },
+    {
+      "query": "path:\"VIII Docs L10n\"",
+      "color": {
+        "a": 1,
+        "rgb": 9416331
+      }
+    },
+    {
+      "query": "path:HOME OR path:DOCTRINE OR path:pipeline OR path:how-to OR path:changelog OR path:\"Org Map\"",
+      "color": {
+        "a": 1,
+        "rgb": 13938487
+      }
+    }
+  ],
+  "collapse-display": true,
+  "showArrow": true,
+  "textFadeMultiplier": -0.3,
+  "nodeSizeMultiplier": 1.25,
+  "lineSizeMultiplier": 1.1,
+  "collapse-forces": true,
+  "centerStrength": 0.45,
+  "repelStrength": 12,
+  "linkStrength": 1,
+  "linkDistance": 220,
+  "scale": 1.0449043882274618,
+  "close": true
+}

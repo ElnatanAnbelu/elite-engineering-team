@@ -1,0 +1,677 @@
+/* ============================================================================
+   ELITE NOIR  —  a dark-luxury theme for the AI Engineering Skill Team vault
+   Pure CSS. No plugins. No JS. Ships inside the vault.
+   ============================================================================ */
+
+/* ----------------------------------------------------------------------------
+   0. BUNDLED PREMIUM FONTS  (Fraunces · Inter · JetBrains Mono, all OFL)
+   ---------------------------------------------------------------------------- */
+@font-face { font-family: "Inter"; font-weight: 400; font-style: normal; font-display: swap; src: url("fonts/inter-400.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 500; font-style: normal; font-display: swap; src: url("fonts/inter-500.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 600; font-style: normal; font-display: swap; src: url("fonts/inter-600.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 700; font-style: normal; font-display: swap; src: url("fonts/inter-700.woff2") format("woff2"); }
+@font-face { font-family: "Fraunces"; font-weight: 600; font-style: normal; font-display: swap; src: url("fonts/fraunces-600.woff2") format("woff2"); }
+@font-face { font-family: "Fraunces"; font-weight: 700; font-style: normal; font-display: swap; src: url("fonts/fraunces-700.woff2") format("woff2"); }
+@font-face { font-family: "Fraunces"; font-weight: 900; font-style: normal; font-display: swap; src: url("fonts/fraunces-900.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-weight: 400; font-style: normal; font-display: swap; src: url("fonts/jbmono-400.woff2") format("woff2"); }
+
+/* ----------------------------------------------------------------------------
+   1. DESIGN TOKENS
+   ---------------------------------------------------------------------------- */
+.theme-dark {
+  /* Canvas + surfaces */
+  --noir-bg:            #0e0e11;   /* deepest canvas            */
+  --noir-bg-2:          #15151a;   /* sidebars / elevated       */
+  --noir-bg-3:          #1c1c23;   /* cards / inputs            */
+  --noir-bg-hover:      #23232c;
+  --noir-line:          #2a2a33;   /* hairline borders          */
+
+  /* Ink */
+  --noir-text:          #e8e3d6;   /* parchment body            */
+  --noir-text-soft:     #b7b1a3;
+  --noir-text-faint:    #7d786c;
+
+  /* Gold accent system */
+  --noir-gold:          #d4af37;
+  --noir-gold-bright:   #ecc94b;
+  --noir-gold-deep:     #9c7c1f;
+  --noir-gold-glow:     rgba(212, 175, 55, 0.14);
+
+  /* Stage jewel tones (also used by graph groups) */
+  --stage-staff:        #d4af37;   /* gold      */
+  --stage-leadership:   #b08be0;   /* amethyst  */
+  --stage-engineering:  #5fb0e6;   /* sapphire  */
+  --stage-infra:        #4fc2a8;   /* emerald   */
+  --stage-security:     #e0696b;   /* ruby      */
+  --stage-design:       #e89bbd;   /* rose      */
+  --stage-data:         #e0a84f;   /* amber     */
+  --stage-docs:         #8fae8b;   /* sage      */
+
+  /* ---- Map tokens onto Obsidian's variables ---- */
+  --background-primary:        var(--noir-bg);
+  --background-primary-alt:    var(--noir-bg-2);
+  --background-secondary:      var(--noir-bg-2);
+  --background-secondary-alt:  var(--noir-bg-3);
+  --background-modifier-border:        var(--noir-line);
+  --background-modifier-border-hover:  var(--noir-gold-deep);
+  --background-modifier-hover:         var(--noir-bg-hover);
+  --background-modifier-active-hover:  var(--noir-gold-glow);
+
+  --text-normal:   var(--noir-text);
+  --text-muted:    var(--noir-text-soft);
+  --text-faint:    var(--noir-text-faint);
+  --text-accent:   var(--noir-gold);
+  --text-accent-hover: var(--noir-gold-bright);
+  --text-on-accent: #1a1407;
+
+  --interactive-accent:        var(--noir-gold);
+  --interactive-accent-hover:  var(--noir-gold-bright);
+  --interactive-normal:        var(--noir-bg-3);
+  --interactive-hover:         var(--noir-bg-hover);
+
+  --text-selection: var(--noir-gold-glow);
+  --hr-color:       var(--noir-line);
+
+  /* Type — Fraunces (display) · Inter (body/UI) · JetBrains Mono (code) */
+  --font-display:    "Fraunces", "Iowan Old Style", "Charter", Georgia, serif;
+  --font-text:       "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-interface:  "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --font-monospace:  "JetBrains Mono", "SF Mono", "Fira Code", ui-monospace, Menlo, monospace;
+
+  --h1-color: var(--noir-text);
+  --h2-color: var(--noir-text);
+  --h3-color: var(--noir-gold-bright);
+
+  --bold-color:   #f3eee0;
+  --italic-color: var(--noir-text-soft);
+
+  --link-color:       var(--noir-gold);
+  --link-color-hover: var(--noir-gold-bright);
+  --link-decoration:  none;
+  --link-decoration-hover: underline;
+
+  --radius-m: 10px;
+  --radius-l: 14px;
+}
+
+/* Body reading font sizing & rhythm */
+.theme-dark {
+  --font-text-size: 17px;
+  --line-height-normal: 1.7;
+  --file-line-width: 46rem;
+  --p-spacing: 0.9rem;
+}
+
+/* ----------------------------------------------------------------------------
+   2. GLOBAL CANVAS
+   ---------------------------------------------------------------------------- */
+.theme-dark body,
+.theme-dark .workspace {
+  background: radial-gradient(1200px 800px at 80% -10%, #16131a 0%, var(--noir-bg) 55%) fixed;
+}
+
+.theme-dark .markdown-preview-view,
+.theme-dark .markdown-source-view {
+  letter-spacing: 0.1px;
+}
+
+/* ----------------------------------------------------------------------------
+   3. HEADINGS  — serif, gold hairlines
+   ---------------------------------------------------------------------------- */
+.theme-dark .markdown-rendered h1,
+.theme-dark .HyperMD-header-1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 2.35em;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  background: linear-gradient(180deg, #f5efe0 0%, #cdbf9b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding-bottom: 0.25em;
+  margin-bottom: 0.5em;
+  border-bottom: 1px solid transparent;
+  border-image: linear-gradient(90deg, var(--noir-gold) 0%, transparent 70%) 1;
+}
+
+.theme-dark .markdown-rendered h2,
+.theme-dark .HyperMD-header-2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.6em;
+  color: var(--noir-text);
+  margin-top: 1.6em;
+  padding-bottom: 0.2em;
+  border-bottom: 1px solid var(--noir-line);
+}
+
+.theme-dark .markdown-rendered h2::before {
+  content: "";
+  display: inline-block;
+  width: 0.5em; height: 0.5em;
+  margin-right: 0.55em;
+  border-radius: 2px;
+  background: var(--noir-gold);
+  transform: rotate(45deg) translateY(-2px);
+  box-shadow: 0 0 10px var(--noir-gold-glow);
+}
+
+.theme-dark .markdown-rendered h3,
+.theme-dark .HyperMD-header-3 {
+  font-family: var(--font-interface);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.92em;
+  color: var(--noir-gold-bright);
+}
+
+/* ----------------------------------------------------------------------------
+   4. LINKS  (internal + external)
+   ---------------------------------------------------------------------------- */
+.theme-dark a.internal-link,
+.theme-dark .cm-hmd-internal-link {
+  color: var(--noir-gold);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--noir-gold-deep);
+  transition: color .15s, border-color .15s, text-shadow .15s;
+}
+.theme-dark a.internal-link:hover,
+.theme-dark .cm-hmd-internal-link:hover {
+  color: var(--noir-gold-bright);
+  border-bottom-color: var(--noir-gold-bright);
+  text-shadow: 0 0 12px var(--noir-gold-glow);
+}
+.theme-dark a.internal-link.is-unresolved { color: var(--noir-text-faint); border-bottom-style: dashed; }
+
+/* ----------------------------------------------------------------------------
+   5. BLOCKQUOTES + CALLOUTS  — premium cards
+   ---------------------------------------------------------------------------- */
+.theme-dark .markdown-rendered blockquote {
+  border-left: 2px solid var(--noir-gold);
+  background: linear-gradient(90deg, var(--noir-gold-glow), transparent 60%);
+  border-radius: 0 var(--radius-m) var(--radius-m) 0;
+  color: var(--noir-text-soft);
+  font-style: italic;
+  padding: 0.7em 1.1em;
+}
+
+.theme-dark .callout {
+  border: 1px solid var(--noir-line);
+  border-radius: var(--radius-l);
+  background: var(--noir-bg-3);
+  box-shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.02);
+  mix-blend-mode: normal;
+  padding: 0.2em 0.2em 0.4em;
+}
+.theme-dark .callout .callout-title {
+  font-family: var(--font-interface);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.82em;
+  font-weight: 700;
+}
+.theme-dark .callout[data-callout="abstract"],
+.theme-dark .callout[data-callout="tip"],
+.theme-dark .callout[data-callout="quote"] {
+  --callout-color: 212, 175, 55;
+}
+.theme-dark .callout[data-callout="danger"],
+.theme-dark .callout[data-callout="warning"] {
+  --callout-color: 224, 105, 107;
+}
+
+/* ----------------------------------------------------------------------------
+   6. CODE
+   ---------------------------------------------------------------------------- */
+.theme-dark .markdown-rendered code {
+  background: var(--noir-bg-3);
+  border: 1px solid var(--noir-line);
+  border-radius: 6px;
+  color: var(--noir-gold-bright);
+  padding: 0.1em 0.4em;
+  font-size: 0.88em;
+}
+.theme-dark .markdown-rendered pre {
+  background: #0b0b0e;
+  border: 1px solid var(--noir-line);
+  border-radius: var(--radius-l);
+  box-shadow: inset 0 0 0 1px rgba(212,175,55,.04);
+}
+
+/* ----------------------------------------------------------------------------
+   7. TABLES
+   ---------------------------------------------------------------------------- */
+.theme-dark .markdown-rendered table { border-collapse: separate; border-spacing: 0; border-radius: var(--radius-m); overflow: hidden; border: 1px solid var(--noir-line); }
+.theme-dark .markdown-rendered th { background: var(--noir-bg-2); color: var(--noir-gold-bright); text-transform: uppercase; letter-spacing: .06em; font-size: .8em; }
+.theme-dark .markdown-rendered td, .theme-dark .markdown-rendered th { border-bottom: 1px solid var(--noir-line); border-right: none; }
+.theme-dark .markdown-rendered tr:nth-child(even) td { background: rgba(255,255,255,.015); }
+
+/* ----------------------------------------------------------------------------
+   8. HR  — elegant gold divider with center diamond
+   ---------------------------------------------------------------------------- */
+.theme-dark .markdown-rendered hr {
+  border: none;
+  height: 18px;
+  background: none;
+  position: relative;
+  margin: 2.2em 0;
+}
+.theme-dark .markdown-rendered hr::before {
+  content: "";
+  position: absolute; top: 50%; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--noir-gold-deep), transparent);
+}
+.theme-dark .markdown-rendered hr::after {
+  content: "";
+  position: absolute; top: 50%; left: 50%;
+  width: 7px; height: 7px; transform: translate(-50%, -50%) rotate(45deg);
+  background: var(--noir-gold);
+  box-shadow: 0 0 12px var(--noir-gold-glow);
+}
+
+/* ----------------------------------------------------------------------------
+   9. SIDEBARS / FILE EXPLORER
+   ---------------------------------------------------------------------------- */
+.theme-dark .workspace-tabs .workspace-leaf,
+.theme-dark .workspace-split.mod-left-split,
+.theme-dark .workspace-split.mod-right-split { background: var(--noir-bg-2); }
+
+.theme-dark .nav-file-title, .theme-dark .nav-folder-title {
+  border-radius: 8px;
+  font-family: var(--font-interface);
+  font-size: 0.86em;
+  color: var(--noir-text-soft);
+}
+.theme-dark .nav-file-title:hover, .theme-dark .nav-folder-title:hover { background: var(--noir-bg-hover); color: var(--noir-text); }
+.theme-dark .nav-file-title.is-active {
+  background: var(--noir-gold-glow);
+  color: var(--noir-gold-bright);
+  box-shadow: inset 2px 0 0 var(--noir-gold);
+}
+.theme-dark .nav-folder-title { text-transform: uppercase; letter-spacing: .07em; font-size: .76em; color: var(--noir-text-faint); font-weight: 600; }
+
+/* Title bar / tab header */
+.theme-dark .workspace-tab-header.is-active { background: var(--noir-bg); }
+.theme-dark .workspace-tab-header.is-active .workspace-tab-header-inner-title { color: var(--noir-gold-bright); }
+
+/* ----------------------------------------------------------------------------
+   10. GRAPH VIEW
+   ---------------------------------------------------------------------------- */
+.theme-dark .graph-view.color-fill { color: var(--noir-gold); }
+.theme-dark .graph-view.color-line { color: var(--noir-line); }
+.theme-dark .graph-view.color-text { color: var(--noir-text-soft); }
+.theme-dark .graph-view.color-circle { color: var(--noir-gold-bright); }
+
+/* ----------------------------------------------------------------------------
+   11. SCROLLBARS
+   ---------------------------------------------------------------------------- */
+.theme-dark ::-webkit-scrollbar { width: 11px; height: 11px; }
+.theme-dark ::-webkit-scrollbar-thumb { background: var(--noir-bg-hover); border-radius: 8px; border: 3px solid var(--noir-bg); }
+.theme-dark ::-webkit-scrollbar-thumb:hover { background: var(--noir-gold-deep); }
+
+/* ----------------------------------------------------------------------------
+   12. PROPERTIES (frontmatter) panel
+   ---------------------------------------------------------------------------- */
+.theme-dark .metadata-container {
+  background: var(--noir-bg-2);
+  border: 1px solid var(--noir-line);
+  border-radius: var(--radius-l);
+  padding: 0.5em 0.8em;
+}
+.theme-dark .metadata-property-key { color: var(--noir-gold-deep); text-transform: uppercase; letter-spacing: .05em; font-size: .78em; }
+
+/* ============================================================================
+   13. cssclasses LAYOUTS
+   ============================================================================ */
+
+/* ---- 13a. elite-home : the dashboard ---- */
+.elite-home.markdown-rendered h1 {
+  text-align: center;
+  font-size: 3em;
+  border-image: none;
+  margin-bottom: 0.1em;
+}
+.elite-home.markdown-rendered > .el-h1 + .el-p,
+.elite-home.markdown-rendered h1 + p {
+  text-align: center;
+  color: var(--noir-text-faint);
+  font-style: italic;
+  font-size: 1.1em;
+  margin-bottom: 2em;
+}
+/* turn the callouts on HOME into a responsive card grid */
+.elite-home .markdown-preview-section:has(> div > .callout),
+.elite-home .el-callout { }
+.elite-home.markdown-rendered .callout {
+  display: inline-block;
+  width: calc(50% - 14px);
+  vertical-align: top;
+  margin: 7px;
+  transition: transform .18s, box-shadow .18s, border-color .18s;
+}
+.elite-home.markdown-rendered .callout:hover {
+  transform: translateY(-3px);
+  border-color: var(--noir-gold-deep);
+  box-shadow: 0 18px 40px rgba(0,0,0,.5), 0 0 0 1px var(--noir-gold-glow);
+}
+.elite-home.markdown-rendered .callout .callout-title { font-size: .9em; }
+.elite-home.markdown-rendered .callout ul { margin: .2em 0; padding-left: 1.1em; }
+.elite-home.markdown-rendered .callout li { font-size: .9em; font-style: normal; }
+@media (max-width: 900px) {
+  .elite-home.markdown-rendered .callout { width: calc(100% - 14px); }
+}
+
+/* ---- 13b. elite-role : role note hero ---- */
+.elite-role.markdown-rendered h1 {
+  font-size: 2.6em;
+}
+/* the lead [!abstract] mandate callout reads like a pull-quote */
+.elite-role.markdown-rendered .callout[data-callout="abstract"]:first-of-type {
+  background: linear-gradient(100deg, var(--noir-gold-glow), transparent 70%);
+  border-left: 3px solid var(--noir-gold);
+  font-size: 1.05em;
+}
+
+/* ---- 13c. elite-doc : foundation docs (DOCTRINE / how-to / changelog) ---- */
+.elite-doc.markdown-rendered { --file-line-width: 48rem; }
+
+/* ============================================================================
+   13d. elite-pipeline : bespoke card stepper (replaces the Mermaid diagram)
+   ============================================================================ */
+.elite-pipeline.markdown-rendered { --file-line-width: 44rem; }
+.elite-pipeline.markdown-rendered h1 { text-align: center; border-image: none; }
+.elite-pipeline.markdown-rendered h1 + p {
+  text-align: center; color: var(--noir-text-faint); font-style: italic;
+  font-size: 1.08em; margin: -0.2em 0 2.2em;
+}
+
+/* shared: each pipeline block is centered on a vertical spine */
+.elite-pipeline .callout[data-callout="orchestrator"],
+.elite-pipeline .callout[data-callout^="stage"],
+.elite-pipeline .callout[data-callout="gate"],
+.elite-pipeline .callout[data-callout="flowstart"],
+.elite-pipeline .callout[data-callout="flowend"] {
+  position: relative;
+  margin: 20px auto 0;
+}
+/* gold connector drawn above every block except the start marker */
+.elite-pipeline .callout[data-callout="orchestrator"]::before,
+.elite-pipeline .callout[data-callout^="stage"]::before,
+.elite-pipeline .callout[data-callout="gate"]::before,
+.elite-pipeline .callout[data-callout="flowend"]::before {
+  content: ""; position: absolute; top: -20px; left: 50%;
+  width: 2px; height: 20px; transform: translateX(-50%);
+  background: linear-gradient(var(--noir-gold-deep), var(--noir-gold-deep));
+  opacity: .55;
+}
+/* hide default fold-icons on custom callouts */
+.elite-pipeline .callout[data-callout="orchestrator"] .callout-icon,
+.elite-pipeline .callout[data-callout^="stage"] .callout-icon,
+.elite-pipeline .callout[data-callout="gate"] .callout-icon,
+.elite-pipeline .callout[data-callout="flowstart"] .callout-icon,
+.elite-pipeline .callout[data-callout="flowend"] .callout-icon { display: none; }
+
+/* ---- Stage cards ---- */
+.elite-pipeline .callout[data-callout^="stage"] {
+  --accent: var(--noir-gold);
+  width: 100%;
+  border: 1px solid var(--noir-line);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-l);
+  background:
+    linear-gradient(100deg, color-mix(in srgb, var(--accent) 10%, transparent), transparent 55%),
+    var(--noir-bg-3);
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+.elite-pipeline .callout[data-callout="stage1"] { --accent: var(--stage-leadership); }
+.elite-pipeline .callout[data-callout="stage2"] { --accent: var(--stage-engineering); }
+.elite-pipeline .callout[data-callout="stage3"] { --accent: var(--stage-infra); }
+.elite-pipeline .callout[data-callout="stage4"] { --accent: var(--stage-security); }
+.elite-pipeline .callout[data-callout="stage5"] { --accent: var(--stage-data); }
+.elite-pipeline .callout[data-callout^="stage"] .callout-title {
+  font-family: var(--font-display);
+  font-size: 1.3em; font-weight: 600; color: var(--accent);
+  text-transform: none; letter-spacing: 0;
+}
+.elite-pipeline .callout[data-callout^="stage"] .callout-content p { margin: .35em 0; }
+.elite-pipeline .callout[data-callout^="stage"] em {
+  color: var(--noir-text-faint); font-size: .86em;
+}
+
+/* role chips */
+.elite-pipeline .callout[data-callout^="stage"] a.internal-link {
+  display: inline-block; margin: 4px 5px 0 0; padding: .12em .65em;
+  background: var(--noir-bg-2); border: 1px solid var(--noir-line);
+  border-radius: 8px; color: var(--noir-text);
+  font-family: var(--font-interface); font-size: .82em;
+  text-decoration: none; transition: all .15s;
+}
+.elite-pipeline .callout[data-callout^="stage"] a.internal-link:hover {
+  background: var(--noir-gold-glow); border-color: var(--noir-gold-deep);
+  color: var(--noir-gold-bright); transform: translateY(-1px); text-shadow: none;
+}
+
+/* ---- Orchestrator banner ---- */
+.elite-pipeline .callout[data-callout="orchestrator"] {
+  width: 100%; text-align: center;
+  border: 1px solid var(--noir-gold-deep); border-radius: var(--radius-l);
+  background: radial-gradient(120% 120% at 50% 0%, var(--noir-gold-glow), var(--noir-bg-3) 65%);
+}
+.elite-pipeline .callout[data-callout="orchestrator"] .callout-title {
+  justify-content: center; color: var(--noir-gold-bright);
+  font-family: var(--font-display); font-size: 1.25em; text-transform: none; letter-spacing: 0;
+}
+
+/* ---- Gate pills (title only) ---- */
+.elite-pipeline .callout[data-callout="gate"] {
+  width: max-content; max-width: 92%;
+  background: var(--noir-gold-glow); border: 1px solid var(--noir-gold);
+  border-radius: 999px; box-shadow: 0 0 18px rgba(212,175,55,.12);
+}
+.elite-pipeline .callout[data-callout="gate"] .callout-title {
+  justify-content: center; gap: .5em;
+  color: var(--noir-gold-bright); font-family: var(--font-interface);
+  text-transform: uppercase; letter-spacing: .09em; font-size: .74em; font-weight: 700;
+  padding: .4em 1em;
+}
+.elite-pipeline .callout[data-callout="gate"] .callout-title::before { content: "◆"; color: var(--noir-gold); }
+.elite-pipeline .callout[data-callout="gate"] .callout-content { display: none; }
+
+/* ---- Start / End markers ---- */
+.elite-pipeline .callout[data-callout="flowstart"],
+.elite-pipeline .callout[data-callout="flowend"] {
+  width: max-content; max-width: 92%; text-align: center; border-radius: 999px;
+}
+.elite-pipeline .callout[data-callout="flowstart"] { background: var(--noir-bg-3); border: 1px solid var(--noir-line); }
+.elite-pipeline .callout[data-callout="flowstart"] .callout-title {
+  justify-content: center; color: var(--noir-text-soft);
+  text-transform: uppercase; letter-spacing: .12em; font-size: .76em; padding: .4em 1.1em;
+}
+.elite-pipeline .callout[data-callout="flowend"] {
+  background: linear-gradient(180deg, var(--noir-gold-bright), var(--noir-gold-deep));
+  border: 1px solid var(--noir-gold-bright);
+  box-shadow: 0 10px 34px rgba(212,175,55,.28);
+}
+.elite-pipeline .callout[data-callout="flowend"] .callout-title {
+  justify-content: center; color: #1a1407; font-weight: 800;
+  text-transform: uppercase; letter-spacing: .08em; padding: .5em 1.2em;
+}
+.elite-pipeline .callout[data-callout="flowend"] .callout-content { display: none; }
+
+/* ============================================================================
+   14. MERMAID  — re-skin the pipeline diagram to dark luxury
+   Mermaid renders inline SVG with inline fills; override with !important.
+   ============================================================================ */
+.theme-dark .mermaid {
+  background: transparent;
+  --mer-gold: var(--noir-gold);
+  --mer-surface: #181820;
+}
+
+/* All diagram text → parchment */
+.theme-dark .mermaid .nodeLabel,
+.theme-dark .mermaid .node .label,
+.theme-dark .mermaid span.nodeLabel,
+.theme-dark .mermaid p {
+  color: var(--noir-text) !important;
+  fill: var(--noir-text) !important;
+  font-family: var(--font-interface) !important;
+  font-weight: 500;
+}
+
+/* Rectangular nodes = specialists (and the [[subroutine]] orchestrator) */
+.theme-dark .mermaid .node rect,
+.theme-dark .mermaid .node path {
+  fill: var(--mer-surface) !important;
+  stroke: var(--noir-gold-deep) !important;
+  stroke-width: 1.2px !important;
+  rx: 7px; ry: 7px;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,.45));
+}
+
+/* Diamond gates {G1…G5} = polygons → gold-tinted, the visual checkpoints */
+.theme-dark .mermaid .node polygon {
+  fill: rgba(212,175,55,0.14) !important;
+  stroke: var(--noir-gold) !important;
+  stroke-width: 1.6px !important;
+}
+
+/* Start / end circles → solid gold */
+.theme-dark .mermaid .node circle {
+  fill: var(--noir-gold) !important;
+  stroke: var(--noir-gold-bright) !important;
+}
+.theme-dark .mermaid .node circle ~ .label .nodeLabel,
+.theme-dark .mermaid g.node:has(circle) .nodeLabel {
+  fill: #1a1407 !important;
+  color: #1a1407 !important;
+  font-weight: 700;
+}
+
+/* Subgraph clusters = the five stages */
+.theme-dark .mermaid .cluster rect {
+  fill: rgba(255,255,255,0.025) !important;
+  stroke: var(--noir-line) !important;
+  stroke-width: 1px !important;
+  rx: 12px; ry: 12px;
+}
+.theme-dark .mermaid .cluster .cluster-label,
+.theme-dark .mermaid .cluster-label .nodeLabel,
+.theme-dark .mermaid .cluster span {
+  fill: var(--noir-gold-bright) !important;
+  color: var(--noir-gold-bright) !important;
+  font-family: var(--font-display) !important;
+  font-weight: 600 !important;
+  text-transform: none;
+}
+
+/* Edges */
+.theme-dark .mermaid .edgePath .path,
+.theme-dark .mermaid .flowchart-link {
+  stroke: var(--noir-text-faint) !important;
+  stroke-width: 1.4px !important;
+}
+.theme-dark .mermaid .arrowheadPath,
+.theme-dark .mermaid marker path,
+.theme-dark .mermaid defs marker path {
+  fill: var(--noir-gold) !important;
+  stroke: none !important;
+}
+
+/* Edge labels: kill the default white background, make text legible */
+.theme-dark .mermaid .edgeLabel,
+.theme-dark .mermaid .edgeLabel p,
+.theme-dark .mermaid .edgeLabel span {
+  background: transparent !important;
+  color: var(--noir-text-soft) !important;
+  fill: var(--noir-text-soft) !important;
+  font-size: 0.78em !important;
+  font-style: italic;
+}
+.theme-dark .mermaid .edgeLabel rect,
+.theme-dark .mermaid .edgeLabel .label-container {
+  fill: var(--noir-bg) !important;
+  background: var(--noir-bg) !important;
+  opacity: 0.92;
+}
+
+/* ============================================================================
+   15. elite-canvas : the SVG pipeline infographic page
+   ============================================================================ */
+/* full-width page (beat Obsidian's readable-line-length) */
+.elite-canvas.markdown-rendered,
+.elite-canvas.markdown-preview-view,
+.markdown-preview-view.elite-canvas { --file-line-width: 100% !important; --file-line-width-adaptive: 100% !important; }
+.markdown-preview-view.elite-canvas .markdown-preview-sizer,
+.elite-canvas .markdown-preview-sizer,
+.elite-canvas .markdown-preview-sizer > div,
+.elite-canvas.markdown-source-view .cm-sizer,
+.elite-canvas .cm-content {
+  max-width: 100% !important; width: 100% !important;
+}
+.elite-canvas.markdown-rendered h1 { text-align: center; border-image: none; }
+.elite-canvas.markdown-rendered h1 + p {
+  text-align: center; color: var(--noir-text-faint); font-style: italic;
+  font-size: 1.08em; margin: -0.2em 0 1.6em;
+}
+/* frame the embedded pipeline-flow.svg, force it full width */
+.elite-canvas .internal-embed.image-embed,
+.elite-canvas span.image-embed,
+.elite-canvas .pipeline-figure {
+  display: block !important; width: 100% !important; max-width: 100% !important;
+  text-align: center; box-sizing: border-box;
+  margin: 0 auto 1.8em; padding: 1.2em 1.2em;
+  line-height: 0; font-size: 0;
+  background: radial-gradient(1200px 520px at 50% -15%, #16131a, transparent);
+  border: 1px solid var(--noir-line); border-radius: var(--radius-l);
+  overflow-x: auto; overflow-y: hidden;
+}
+.elite-canvas .image-embed img,
+.elite-canvas .image-embed svg,
+.elite-canvas .pipeline-figure svg {
+  display: block !important;
+  width: 100% !important; height: auto !important;
+  min-width: 0 !important; max-width: 100% !important; margin: 0 auto;
+  aspect-ratio: 1634 / 663;
+}
+/* specialist index chips */
+.elite-canvas .callout a.internal-link {
+  display: inline-block; margin: 4px 5px 0 0; padding: .12em .65em;
+  background: var(--noir-bg-2); border: 1px solid var(--noir-line);
+  border-radius: 8px; color: var(--noir-text);
+  font-family: var(--font-interface); font-size: .82em;
+  text-decoration: none; transition: all .15s;
+}
+.elite-canvas .callout a.internal-link:hover {
+  background: var(--noir-gold-glow); border-color: var(--noir-gold-deep);
+  color: var(--noir-gold-bright); transform: translateY(-1px); text-shadow: none;
+}
+
+/* ============================================================================
+   16. CANVAS cards — premium, slightly larger text
+   ============================================================================ */
+.theme-dark .canvas-node .markdown-preview-view,
+.theme-dark .canvas-node .markdown-embed,
+.theme-dark .canvas-node-content { font-size: 1.0em; line-height: 1.4; }
+/* vertically centre content in every card */
+.theme-dark .canvas-node .markdown-preview-view {
+  display: flex; flex-direction: column; justify-content: center; height: 100%;
+}
+.theme-dark .canvas-node .markdown-preview-view .markdown-preview-sizer { width: 100%; }
+/* stage titles → Fraunces, centred, no rule/gradient */
+.theme-dark .canvas-node .markdown-preview-view h1,
+.theme-dark .canvas-node .markdown-preview-view h2 {
+  font-family: var(--font-display) !important;
+  text-align: center; margin: 0.08em 0; border: none !important;
+  padding: 0; background: none; -webkit-text-fill-color: currentColor;
+}
+.theme-dark .canvas-node .markdown-preview-view h2 { font-size: 1.22em; letter-spacing: 0; }
+.theme-dark .canvas-node .markdown-preview-view p { text-align: center; margin: 0.12em 0; color: var(--noir-text-soft); }
+/* role links → clean centred labels, not underlined links */
+.theme-dark .canvas-node a.internal-link {
+  text-decoration: none !important; border-bottom: none !important;
+  font-family: var(--font-interface); font-weight: 600; color: var(--noir-text);
+}
+.theme-dark .canvas-node a.internal-link:hover { color: var(--noir-gold-bright); text-shadow: none; }

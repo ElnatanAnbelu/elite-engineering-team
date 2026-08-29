@@ -1,0 +1,209 @@
+{
+  "main": {
+    "id": "ee7d656e0efc635a",
+    "type": "split",
+    "children": [
+      {
+        "id": "a9ad0f6d59a2db7a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1bb1d74a87f68fe1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "pipeline.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "pipeline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "b43ddb834efac6c2",
+    "type": "split",
+    "children": [
+      {
+        "id": "a237000967bdff1e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "16b45ab10d065c44",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "5bdf90d97c215388",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "cbedb3d1eb42e03a",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "744197e4e670284b",
+    "type": "split",
+    "children": [
+      {
+        "id": "28c9a62484d9eaa4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d923868e2eabdd8d",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "leadership/cto-advisor.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for cto-advisor"
+            }
+          },
+          {
+            "id": "dd2caec8a908153f",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "leadership/cto-advisor.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from cto-advisor"
+            }
+          },
+          {
+            "id": "79c6419c649c9a78",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "9eabe593ceadd7e0",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "69e641df465210bc",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "leadership/cto-advisor.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of cto-advisor"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "1bb1d74a87f68fe1",
+  "lastOpenFiles": [
+    "Org Map.canvas",
+    "pipeline.md",
+    "HOME.md",
+    "05 leadership/cto-advisor.md",
+    "infrastructure/cloud-architect.md",
+    "engineering/mlops.md",
+    "engineering/cryptographic-eng.md",
+    "engineering/api-integration.md",
+    "engineering/ai-ml.md",
+    "docs-l10n/tech-writer.md",
+    "docs-l10n/l10n.md",
+    "design/uxr.md",
+    "design/ux-designer.md",
+    "design/design-ops.md",
+    "design/content-designer.md",
+    "data/data-scientist.md",
+    "data/data-governance.md",
+    "data/data-engineer.md",
+    "assets/pipeline-flow.svg",
+    "staff-engineer/staff-engineer.md"
+  ]
+}
