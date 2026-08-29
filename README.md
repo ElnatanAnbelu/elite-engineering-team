@@ -1,38 +1,22 @@
-# Elite-Engineering-Team
+# Elite-Engineering-Team : Multi-Agent LLM Orchestration
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)]() [![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)]() [![Supabase](https://img.shields.io/badge/Supabase-Database-green?logo=supabase)]()
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![AI Orchestration](https://img.shields.io/badge/AI-Orchestration-purple)]() [![Claude](https://img.shields.io/badge/Anthropic-Claude-orange)]()
 
-> **An autonomous, multi-agent AI framework orchestrating specialized engineering roles.**
+> **A deterministic framework for coordinating specialized, autonomous AI agents across the software development lifecycle.**
 
-Elite-Engineering-Team is architected for speed, security, and scalability. It leverages modern paradigms to deliver a seamless developer and user experience while maintaining robust data integrity.
+This repository contains the architectural prompts, contextual boundary rules, and system instructions required to simulate a fully-staffed, elite engineering department. It moves beyond standard "code generation" into systematic, multi-agent collaboration—enforcing rigorous security reviews, architectural decision records (ADRs), and QA testing protocols before code is ever merged.
 
-## 🚀 Architecture & Stack
+## 🚀 System Architecture
 
-- **Primary Technologies:** Claude / Prompt Engineering / Agentic Workflows
-- **Security:** Strict Access Control & Role-Based Policies
-- **Infrastructure:** Scalable Cloud Native
+- **Contextual Boundary Enforcement:** Each agent persona (e.g., `appsec`, `cloud-architect`, `tech-lead`) operates within strict operational bounds, preventing LLM hallucination and scope creep.
+- **Deterministic Prompt Chaining:** Outputs from the `tech-lead` agent are algorithmically parsed and piped into the `swe-fe` and `swe-be` execution agents.
+- **Autonomous Synthesis:** Continuous feedback loops where the `qa-engineer` agent independently critiques and requests refactors from execution agents.
 
-## ✨ Core Features
+## ✨ Core Framework Features
 
-- 🧠 20+ specialized AI personas (Security, DevOps, QA, PM)
-- 🏗️ Standardized system prompts (ELITE_STANDARDS)
-- 🚀 Automated architectural decision records (ADR) generation
-
-## ⚙️ Quick Start
-
-```bash
-# Clone the repository
-git clone https://github.com/ElnatanAnbelu/elite-engineering-team.git
-
-# Install dependencies
-pnpm install
-
-# Configure environment
-cp .env.example .env.local
-
-# Run the development server
-pnpm run dev
-```
+- **🧠 20+ Specialized Personas:** Highly tuned system prompts for specific engineering disciplines (DevOps, SRE, MLOPs, UX/UI).
+- **🏗️ ELITE_STANDARDS Protocol:** A mandatory ruleset that forces AI models to write modular, DRY, and highly secure code rather than boilerplate scripts.
+- **🛡️ Automated Threat Modeling:** Integrated Security Operations (SecOps) prompts that proactively scan generated architectures for CVE vulnerabilities.
 
 ---
 *Architected by [Elnatan Anbelu](https://github.com/ElnatanAnbelu).*
